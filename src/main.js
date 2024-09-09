@@ -33,9 +33,10 @@ app.use("/", pageRouter);
 app.use("/api/v1", routes);
 
 app.all("*", (req, res) => {
-  res.status(404).send({
-    message: `Berilgan ${req.url} endpoint mavjud emas`,
-  });
+  // res.status(404).send({
+  //   message: `Berilgan ${req.url} endpoint mavjud emas`,
+  // });
+  res.render('_404')
 });
 
 app.listen(appConfig.port, appConfig.host, () => {

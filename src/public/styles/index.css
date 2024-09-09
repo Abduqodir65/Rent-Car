@@ -370,8 +370,13 @@ nav .help .help-number h3:hover {
     width: 150px;
     height: 50px;
     border-radius: 25px;
-    font-size: 13px;
     transition: 500ms ease;
+}
+
+.about-inner .about-title button a{
+    color: black;
+    text-decoration: none;
+    font-size: 13px;
 }
 
 .about-inner .about-title button img{
@@ -381,7 +386,6 @@ nav .help .help-number h3:hover {
 
 .about-inner .about-title button:hover{
     background-color: black;
-    color: white;
     transform: translateY(-7px);
 }
 
