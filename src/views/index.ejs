@@ -3,11 +3,446 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/css/index.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="/public/styles/index.css">
+    <title>Rent Car</title>
 </head>
 <body>
-    <h1>Hello I'am Cristiano Ronaldo</h1>
+    <div class="background-image"></div>
+    <div class="slider">
+		<div class="slides">
+			<div class="slide active" style="background-image: url('https://webredox.net/demo/wp/renax/wp-content/uploads/2024/04/11.jpg');"></div>
+			<div class="slide" style="background-image: url('https://webredox.net/demo/wp/renax/wp-content/uploads/2024/04/12.jpg');"></div>
+			<div class="slide" style="background-image: url('https://webredox.net/demo/wp/renax/wp-content/uploads/2024/04/14.jpg');"></div>
+		</div>
+	</div>
+
+    <div class="dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+
+
+    
+    <header>
+		<div class="container">
+			<nav>
+				<div class="site-logo">
+                    <h1>RENT CAR</h1>
+				</div>
+				<div class="navigation">
+					<ul>
+						<li><a href="#">Home</a></li>
+						<li><a href="#">About</a></li>
+						<li><a href="#">Services</a></li>
+						<li><a href="#">Cars</a></li>
+						<li><a href="#">Pages</a></li>
+						<li><a href="#">News</a></li>
+						<li><a href="#">Contact</a></li>
+						<li><a href="#">|</a><img src="./public/images/shopping_cart.svg" alt=""></li>
+					</ul>
+                    <div class="help">
+                        <div class="help-icon">
+                            <img src="./public/images/telephone.svg" alt="telephone">
+                        </div>
+                        <div class="help-number">
+                            <p>Need help?</p>
+                            <h3>77 040 04 40</h3>
+                        </div>
+                    </div>
+				</div>
+			</nav>
+		</div>
+	</header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-inner">
+                  <div class="hero-title">
+                    <h3>* PREMIUM</h3>
+                    <h1>Rental Car</h1>
+                    <div class="info">
+                      <p>Rolls Royce Cullinan</p>
+                      <strong>$600</strong>
+                      <span class="price-day">/DAY</span>
+                    </div>
+                    <div class="buttons">
+                      <button class="hero_title_btn1">View Details <img src="./public/images/tepa-strelka-qora.svg" alt=""> </button>
+                      <button class="hero_title_btn2">Rent Now <img src="./public/images/tepa-strelka-oq.svg" alt=""></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </section>
+
+        <section class="about">
+            <div class="about-inner">
+                <div class="about-title">
+                    <span>RENTAX</span>
+                    <div class="about-sozi">
+                        <h1>We Are More Than</h1>
+                        <h3>A Car Rental Company</h3>
+                    </div>
+                    <p>Car repair quisque sodales dui ut varius vestibulum drana tortor turpis porttiton tellus eu euismod nisl massa nutodio in the miss volume place urna lacinia eros nunta urna mauris vehicula rutrum in the miss on volume interdum.</p>
+                    <div class="luxury-cars">
+                        <img src="./public/images/done.svg" alt="">
+                        <p>Sports and Luxury Cars</p>
+                    </div>
+                    <div class="luxury-cars">
+                        <img src="./public/images/done.svg" alt="">
+                        <p>Economy Cars</p>
+                    </div>
+                    <button>Read More <img src="./public/images/tepa-strelka-qora.svg" alt=""></button>
+                </div>
+                <div class="about-img">
+                    <img src="https://webredox.net/demo/wp/renax/wp-content/uploads/2024/04/about.jpg" alt="">
+                </div>
+                <div class="about-video">
+                    <div class="about-video-inner">
+                        <img src="./public/images/pause.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="book-car">
+            <div class="book-car-inner">
+                <div class="book-car-title">
+                    <h4>RENT NOW</h4>
+                    <h1>Book Auto Rental</h1>
+                </div>
+                <div class="book-car-form">
+                    <form action="#">
+                        <select name="cars" id="" >
+                            <option value="">Choose Car Type</option>
+                            <option value="volvo">Volvo</option>
+                            <option value="saab">Saab</option>
+                            <option value="fiat">Fiat</option>
+                            <option value="audi">Audi</option>
+                        </select>
+                        <select name="Pick  " id="">
+                            <option value="">Pick Up location</option>
+                            <option value="volvo">Volvo</option>
+                            <option value="saab">Saab</option>
+                            <option value="fiat">Fiat</option>
+                            <option value="audi">Audi</option>
+                        </select>
+                        <input type="date" id="start" name="trip-start" value="2024-09-01" min="2024-09-01" max="2030-09-01" />
+                        <select name="Pick  " id="">
+                            <option value="">Drop of location</option>
+                            <option value="volvo">Volvo</option>
+                            <option value="saab">Saab</option>
+                            <option value="fiat">Fiat</option>
+                            <option value="audi">Audi</option>
+                        </select>
+                        <input type="date" id="start" name="trip-start" value="2024-09-01" min="2024-09-01" max="2030-09-01" />
+                        <button>Rent Now</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="luxury-cars">
+            <div class="luxury-cars-inner">
+                <div class="luxury-cars-title">
+                    <h4>Select Your Car</h4>
+                    <h1>Luxury <span>Car Fleet</span></h1>
+                </div>
+                <div class="luxury-cars-card">
+                    <div class="luxury-card-img">
+                        <img class="luxury-card-img-img" src="https://webredox.net/demo/wp/renax/demo11/wp-content/uploads/sites/11/2024/04/12.jpg" alt="">
+                    </div>
+
+                    <div class="luxury-card-info">
+                        <div class="luxury-card-features">
+                            <h3>Rolls Royce Cullinan</h3>
+                            <div class="luxury-card-flex">
+                                <div class="luxury-card-doors">
+                                    <img src="./public/images/noun-car-door-1643574.svg" alt="">
+                                    <p>4</p>
+                                </div>
+                                <div class="luxury-card-passengers">
+                                    <img src="./public/images/noun-car-door-1643574.svg" alt="">
+                                    <p>5</p>
+                                </div>
+                                <div class="luxury-card-mexanika">
+                                    <img src="./public/images/noun-car-door-1643574.svg" alt="">
+                                    <p>Auto</p>
+                                </div>
+                                <div class="luxury-card-bagaj">
+                                    <img src="./public/images/noun-car-door-1643574.svg" alt="">
+                                    <p>2 Bags</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="luxury-card-buttons">
+                            <button>Details</button>
+                            <h2>$900</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="luxury-cars-slider-prev-next">
+                <button><img src="./public/images/prev.svg" alt=""></button>
+                <button><img src="./public/images/next.svg" alt=""></button>
+
+            </div>
+        </section>
+        
+        <section class="rental-car-types">
+            <div class="rental-car-types-inner">
+                <div class="rental-car-hr">
+                    <hr>
+                </div>
+                <div class="rental-car-types-title">
+                    <h4>Categories</h4>
+                    <h1>Rental <span>Car Types</span></h1>
+                </div>
+                <!-- -------------------- -->
+                <div class="rental-car-card-wrapper">
+
+                    <div class="rental-car-types-card">
+                        <div class="rental-car-card-img">
+                            <a href="#"><img src="https://webredox.net/demo/wp/renax/demo11/wp-content/uploads/sites/11/2024/04/05.jpg" alt=""></a>
+                        </div>
+                        <div class="rental-car-card-title">
+                            <h2>Sedan</h2>
+                        </div>
+                    </div>                       
+
+                    <div class="rental-car-types-card">
+                        <div class="rental-car-card-img">
+                            <a href="#"><img src="https://webredox.net/demo/wp/renax/demo11/wp-content/uploads/sites/11/2024/04/06.jpg" alt=""></a>
+                        </div>
+                        <div class="rental-car-card-title">
+                            <h2>Small Cars</h2>
+                        </div>
+                    </div>
+                    <div class="rental-car-types-card">
+                        <div class="rental-car-card-img">
+                            <a href="#"><img src="https://webredox.net/demo/wp/renax/demo11/wp-content/uploads/sites/11/2024/04/03.jpg" alt=""></a>
+                        </div>
+                        <div class="rental-car-card-title">
+                            <h2>Luxury Cars</h2>
+                        </div>
+                    </div>
+                    <!-- <div class="rental-car-types-card">
+                        <div class="rental-car-card-img">
+                            <a href="#"><img src="https://webredox.net/demo/wp/renax/demo11/wp-content/uploads/sites/11/2024/04/04.jpg" alt=""></a>
+                        </div>
+                        <div class="rental-car-card-title">
+                            <h2>Sport Cars</h2>
+                        </div>
+                    </div>
+                    <div class="rental-car-types-card">
+                        <div class="rental-car-card-img">
+                            <a href="#"><img src="https://webredox.net/demo/wp/renax/demo11/wp-content/uploads/sites/11/2024/04/01.jpg" alt=""></a>
+                        </div>
+                        <div class="rental-car-card-title">
+                            <h2>Convertible</h2>
+                        </div>
+                    </div> -->
+                </div>
+                <!-- ---------------------------------------- -->
+            </div>
+        </div>
+                <div class="rental-car-hr2">
+                    <hr>
+                </div>
+        </div>
+
+        <section>
+
+        </section class="rental-car-process">
+            <div class="rental-car-process-inner">
+                <div class="rental-car-process-title">
+                    <h4>Steps</h4>
+                    <h1>Rental <span>Car Process</span></h1>
+                </div>
+
+                <div class="rental-car-process-card-wrapper">
+                    <div class="rental-car-process-card">
+                        <div class="rental-car-process-card-title">
+                            <strong>Choose A Car</strong>
+                            <p>View our range of cars, find your perfect car for the coming days.</p>
+                        </div>
+                    </div>
+                    <div class="rental-car-process-card">
+                        <div class="rental-car-process-card-title">
+                            <strong>Come In Contact</strong>
+                            <p>Our advisor team is ready to help you with the booking process or any questions.</p>
+                        </div>
+                    </div>
+                    <div class="rental-car-process-card">
+                        <div class="rental-car-process-card-title">
+                            <strong>Enjoy Driving</strong>
+                            <p>Receive the key and enjoy your car. We treat all our cars with respect.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="rental-car-process-info">
+                    <img src="./public/images/info.svg" alt=""><p> If you've never rented a car before, we'll guide you through the process.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="car-promo-video">
+            <div class="car-promo-video-inner">
+                <div class="car-promo-inner-title">
+                    <h4>EXPLORE</h4>
+                    <h1>Car <span>Promo</span> Video</h1>
+                </div>
+                <div class="car-promo-inner-video">
+                    <img src="./public/images/oq-pause.svg" alt="">
+                </div>
+                <div class="car-promo-background-color"></div>
+            </div>
+        </section>
+
+        <section class="rental-car-client">
+            <div class="rental-car-client-inner">
+                <div class="rental-car-client-inner-title">
+                    <h4>Testimonials</h4>
+                    <h1>What Clients Say</h1>
+                </div>
+                <div class="rental-car-client-inner-wrapper">
+                    <div class="rental-car-client-inner-card">
+                        <div class="client-card-stars">
+                            <img src="./public/images/star.svg" alt="">
+                            <img src="./public/images/star.svg" alt="">
+                            <img src="./public/images/star.svg" alt="">
+                            <img src="./public/images/star.svg" alt="">
+                            <img src="./public/images/star.svg" alt="">
+                            <img src="./public/images/star.svg" alt="">
+                        </div>
+                        <div class="client-card-qoshtirnoq">
+                            <img src="./public/images/quote.svg" alt="">
+                        </div>
+                        <div class="client-card-content">
+                            <p>Came in for walk-in inspection and oil <br> change. Brown is delight to deal with. He <br> took my car right in, and completed work <br> in a short time. Highly recommend the <br> shop.</p>
+                        </div>
+                        <div class="client-card-customer">
+                            <div class="client-card-customer-img">
+                                <img src="https://webredox.net/demo/wp/renax/wp-content/uploads/2024/04/1-1.jpg" alt="">
+                            </div>
+                            <div class="client-card-custumer-name">
+                                <h5>Abduqodir</h5>
+                                <p>Yuldashev</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="car-logos">
+            <div class="car-logos-inner">
+                <div class="logos-image">
+                    <img src="https://webredox.net/demo/wp/renax/wp-content/uploads/2024/04/2.png" alt="">
+                    <img src="https://webredox.net/demo/wp/renax/wp-content/uploads/2024/04/6.png" alt="">
+                    <img src="https://webredox.net/demo/wp/renax/wp-content/uploads/2024/04/1.png" alt="">
+                    <img src="https://webredox.net/demo/wp/renax/wp-content/uploads/2024/04/3.png" alt="">
+                    <img src="https://webredox.net/demo/wp/renax/wp-content/uploads/2024/04/4.png" alt="">
+                    <img src="https://webredox.net/demo/wp/renax/wp-content/uploads/2024/04/5.png" alt="">
+                </div>
+            </div>
+        </section>
+
+    </main>
+<!-- ------------------------------------------------------------------------------------- -->
+    <footer>
+        <div class="container">
+            <section class="footer-hero">
+                <div class="footer-hero-inner">
+                    <div class="footer-inner-contact">
+                        <div class="f_i_contact-div1">
+                            <div class="f_i_contact-telephone">
+                                <img src="./public/images/black_telephone.svg" alt="">
+                            </div>
+                            <div class="f_i_contact-number">
+                                <h4>Call us</h4>
+                                <p>+998 77 040 71 13</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="f_i_contact-div1">
+                            <div class="f_i_contact-email">
+                                <img src="./public/images/email.svg" alt="">
+                            </div>
+                            <div class="f_i_contact-email_adress">
+                                <h4>Write to us</h4>
+                                <p>yuldashevabduqodir429@gmail.com</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="f_i_contact-div1">
+                            <div class="f_i_contact-adress">
+                                <img src="./public/images/location.svg" alt="">
+                            </div>
+                            <div class="f_i_contact-adress-loc">
+                                <h4>Adress</h4>
+                                <p>Tashkent Chilonzor</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-navigation">
+                        <div class="footer-navigation-about">
+                            <h1><a href="#">RENT <span>CAR</span></a></h1>
+                            <p>Rent a car imperdiet sapien porttito the <br>bibenum ellentesue the commodo erat nesuen.</p>
+                            <div class="f-n-about-socials">
+                                <div class="f-n-about-socials-facebook">
+                                    <img src="./public/images/facebook.svg" alt="">
+                                </div>
+                                <div class="f-n-about-socials-facebook">
+                                    <img src="./public/images/telegram.svg" alt="">
+                                </div>
+                                <div class="f-n-about-socials-facebook">
+                                    <img src="./public/images/instagram.svg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer-navigation-links">
+                            <h2>Quick Links</h2>
+                            <ul>
+                                <li>
+                                    About
+                                </li>
+                                <li>
+                                    Cars
+                                </li>
+                                <li>
+                                    Car Types
+                                </li>
+                                <li>
+                                    FAQ
+                                </li>
+                                <li>
+                                    Contact
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="footer-navigation-subscribe">
+                            <h2>Subscribe</h2>
+                            <p>Want to be notified about our services. Just sign <br>up and we'll send you a notification by email.</p>
+                            <form action="#">
+                                <div class="searchBox">
+                                    <input type="email" name="" id="" placeholder="Your email adress">
+                                    <button class="searchButton" ><img src="./public/images/tepa-strelka-qora.svg" alt=""></button>
+                                </div>
+                            </form>
+                        </div> 
+                    </div>
+                    <div class="footer-bottom">
+                        <hr>
+                        <p>©2024 webRedox. All rights reserved.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </footer>
 </body>
-<script src="../public/js/index.js"></script>
+<script src="/public/js/index.js"></script>
 </html>

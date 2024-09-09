@@ -1,0 +1,1411 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: sans-serif;
+}
+
+/* body{
+    background:url('https://webredox.net/demo/wp/renax/wp-content/uploads/2024/04/11.jpg') ;
+    background-size: 100%;
+    background-position: center;
+    background-attachment:fixed;
+} */
+
+.background-image{
+    background-color: rgba(0, 0, 0, 0.483);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+}
+
+.slider {
+    width: 100%;
+    height: 100%; 
+    background: url('https://webredox.net/demo/wp/renax/wp-content/uploads/2024/04/11.jpg') center center;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: -2;
+}
+
+.slide {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 5px;
+    z-index: 1;
+}
+
+.dot {
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    background: rgb(243, 239, 239);
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.dot.active {
+    background: #F5B754;
+}
+
+.conatainer{
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+}
+
+header{
+    max-width: 100%;
+}
+
+nav{
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    margin: 0 50px; 
+}
+
+nav .site-logo h1{
+    color: #F5B754;
+    font-family: sans-serif;
+}
+
+nav .navigation {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+nav .navigation ul {
+    display: flex;
+    gap: 18px;
+    list-style: none;
+}
+
+nav .navigation ul li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+nav .navigation ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+    position: relative;
+    padding-bottom: 4px;
+    transition: color 0.3s ease; 
+}
+
+nav .navigation ul li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 1.5px;
+    background-color: #fff;
+    transition: width 0.3s ease; 
+}
+
+nav .navigation ul li a:hover {
+    color: #F5B754;
+}
+
+nav .navigation ul li a:hover::after,
+nav .navigation ul li a.active_a::after {
+    width: 100%;
+}
+
+nav .navigation ul li a.hover_color{
+    color: #F5B754;
+}
+
+nav .navigation ul li img {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    transition: stroke 0.3s ease;
+}
+
+nav .navigation ul li img:hover path {
+    stroke: #F5B754;
+}
+
+nav .help {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+nav .help .help-icon {
+    display: flex;  
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #F5B754;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    transition: background-color 0.3s ease; 
+    cursor: pointer;
+}
+
+nav .help .help-icon img {
+    width: 25px;
+    height: 25px;
+}
+
+nav .help .help-icon:hover {
+    background-color: #F5B754;
+}
+
+nav .help .help-number {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+nav .help .help-number p {
+    font-size: 12px;
+    color: white;
+}
+
+nav .help .help-number h3 {
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    transition: color 0.3s ease;  
+}
+
+nav .help .help-number h3:hover {
+    color: #F5B754;
+}
+
+/* -------------------------------------------------------------------------------------------- */
+
+.hero {
+    height: 100%;
+    margin: 0 50px;
+    margin-top: 30px;
+    position: relative;
+}
+
+.hero-inner {
+    display: flex;
+    align-items: center;
+}
+
+.hero-title {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.hero-title h1 {
+    font-size: 80px;
+    color: white;
+    
+}
+.hero-title h3 {
+    letter-spacing: 5px;
+    font-size: 10px;
+    color: #F5B754;
+}
+
+.hero-title .info{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.hero-title .info p{
+    color: white;
+    font-size: 15px;
+}
+
+.hero-title .info strong{
+    font-size: 20px;
+    color: #F5B754;
+}
+
+.hero-title .price-day{
+    font-size: 10px;
+    color: white;
+}
+
+.hero-title .buttons{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    position: absolute;
+    top: 180px
+}
+
+.buttons .hero_title_btn1{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    padding: 15px 25px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
+    background-color: #F5B754;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+}
+
+.buttons .hero_title_btn2{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    overflow: none;
+    border:1px solid #F5B754;
+    background:transparent;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 25px;
+    transition: 500ms ease;
+    font-size: 16px;
+}
+
+.buttons .hero_title_btn1 img{
+    width: 14px;
+    height: 14px;
+}
+
+.buttons .hero_title_btn2 img{
+    width: 14px;
+    height: 14px;
+}
+
+.buttons .hero_title_btn1:hover{
+    background-color: white;
+    transform: translateY(-7px);
+}
+
+.buttons .hero_title_btn2:hover{
+    background-color: #F5B754;
+    transform: translateY(-7px);
+} 
+
+/* -------------------------------------------------------------------------------------- */
+
+.about{
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    margin-top: 260px;
+}
+
+.about-inner{
+    align-items: center;
+    margin: 0 50px;
+    display: flex;
+    height: 100%;
+    gap: 100px;
+}
+
+.about-inner .about-title{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    gap: 20px;
+}
+
+.about-inner .about-title h1{
+    font-size: 30px;
+}
+
+.about-inner .about-title h3{
+    font-size: 30px;
+    color: #F5B754;
+}
+
+.about-inner .about-title p{
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.544);
+    column-gap: 5px;
+}
+
+.about-inner .about-title button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: none;
+    overflow: none;
+    background-color: #F5B754;
+    width: 150px;
+    height: 50px;
+    border-radius: 25px;
+    font-size: 13px;
+    transition: 500ms ease;
+}
+
+.about-inner .about-title button img{
+    width: 14px;
+    height: 14px;
+}
+
+.about-inner .about-title button:hover{
+    background-color: black;
+    color: white;
+    transform: translateY(-7px);
+}
+
+
+.about .about-img{
+    display: flex;
+    overflow: hidden;
+    border-radius: 25px;
+    position: relative;
+}
+
+.about-inner .about-img img{
+    position: relative;
+    transition: 1.03s ease;
+    width: 400px;
+    height: 400px;
+}
+
+.about-video{
+    position: absolute;
+    background-color: white;
+    border-radius: 25px;
+    width: 100px;
+    height: 100px;
+    right: 355px;
+    bottom: -495px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}   
+
+.about-video-inner{
+    background-color: grey;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #F5B754;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 200ms ease-in-out;
+}
+
+.about-video-inner:hover{
+    background-color: black;
+}
+
+.about-video-inner img{
+    width: 20px;
+    height: 20px;
+}
+
+.about-inner .about-img img:hover{
+    transform: scale(1.08);
+}
+
+.about-inner .about-title .luxury-cars{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.about-inner .about-title .luxury-cars img{
+    width: 25px;
+    height: 25px;
+}
+
+.about-inner .about-title .about-sozi{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.about-inner .about-title span{
+    font-size: 8px;
+    letter-spacing: 5px;
+    color: #F5B754;
+}
+
+/* -------------------------------------------------------------------------- */
+
+.book-car{
+    width: 100%;
+    height: 400px;
+    background: url('/public/images/photo_2024-08-30_14-39-01.jpg') center center no-repeat;
+    background-size: cover;
+}
+
+.book-car .book-car-inner{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.book-car .book-car-inner .book-car-title{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    margin-top: 70px;
+}
+
+.book-car .book-car-inner .book-car-title h4{
+    color: #F5B754;
+    letter-spacing: 5px;
+    font-size: 10px;
+}
+
+.book-car .book-car-inner .book-car-title h1{
+    color: white;
+    font-size: 30px;
+}
+
+.book-car-form{
+    display: flex;
+    background-color: white;
+    border-radius: 25px;
+    align-items: center;
+    justify-self: center;
+    height: 70px;
+    width: 90%;
+}
+
+.book-car-form form{
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    display: flex;
+    gap: 50px;
+}
+
+.book-car-form form input{
+    border-radius: 25px;
+    border: none;
+}
+
+.book-car-form form select{
+    border: none;
+}
+
+.book-car-form form button{
+    border: none;
+    background-color:#F5B754;
+    padding: 15px 30px;
+    overflow: hidden;
+    border-radius: 25px;
+    transition: 500ms ease-in-out;
+}
+
+.book-car-form form button:hover{
+    color: white;
+    background-color:black;
+    transform: translateY(-7px);
+}
+
+/* --------------------------------------------------------------------------------------------------------------------------------------- */
+
+.luxury-cars{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+.luxury-cars .luxury-cars-inner{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.luxury-cars .luxury-cars-title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 50px;
+}
+
+
+.luxury-cars .luxury-cars-title h4{
+    font-size: 12px;
+    letter-spacing: 5px;
+    color: #F5B754;
+}
+
+.luxury-cars .luxury-cars-title h1{
+    font-size: 30px;
+}
+
+
+.luxury-cars .luxury-cars-title span{
+    font-size: 30px;
+    color: #F5B754;
+}
+
+.luxury-cars-inner .luxury-cars-card{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+    height: 100%;
+    border-radius: 25px;
+}
+
+.luxury-cars .luxury-card-img{
+    display: block;
+    overflow: hidden;
+    border-radius: 25px;
+}
+
+.luxury-cars-inner .luxury-card-img .luxury-card-img-img{
+    transition: 1.2s ease;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.luxury-cars-slider-prev-next{
+    display: flex;
+    position: absolute;
+    justify-content: space-between;
+    width: 66%;
+    align-items: center;
+    bottom: -1350px;
+    right: 180px;
+}
+
+.luxury-cars-slider-prev-next button{
+    border: none;
+    background-color: #F5B754;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.luxury-cars-slider-prev-next img{
+    width: 22px;
+    height: 22px;
+}
+
+.luxury-cars-inner .luxury-cars-card .luxury-card-img-img:hover{
+    transform: scale(1.1);
+}
+
+.luxury-card-info{
+    position: absolute;
+    display: flex;
+    background-color: #ececec;
+    border-radius: 15px;
+    width: 90%;
+    top: 350px;
+    justify-content: space-between;
+    height: 100px;
+    align-items: center;
+    padding: 0 20px;
+
+}
+
+.luxury-card-features{
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.luxury-card-doors{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5;
+}
+
+.luxury-card-passengers{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.luxury-card-mexanika{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.luxury-card-bagaj{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.luxury-card-flex{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.luxury-card-features img{
+    width: 22px;
+    height: 22px;
+}
+
+.luxury-card-buttons{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+
+.luxury-card-buttons button{
+    border: none;
+    background-color:#F5B754;
+    padding: 15px 30px;
+    overflow: hidden;
+    border-radius: 25px;
+    transition: 500ms ease-in-out;
+}
+
+.luxury-card-buttons button:hover{
+    background-color: black;
+    transform: translateY(-7px);
+    color: white;
+}
+
+.luxury-card-buttons h2{
+    color: #F5B754;
+}
+
+/* ----------------------------------------------------------------------------------------- */
+
+.rental-car-types{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+.rental-car-types .rental-car-types-inner{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.rental-car-hr{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 150px;
+}
+
+.rental-car-hr hr{
+    width: 70px;
+    border: 1px solid #F5B754;
+    transform: rotate(90deg); /* 90 daraja aylantirish */
+    transform-origin: center;
+}
+
+.rental-car-types-title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 100px;
+}
+
+.rental-car-types-title h4{
+    color: #F5B754;
+    letter-spacing: 5px;
+    font-size: 12px;
+}
+
+.rental-car-types-title h1{
+    font-size: 30px;
+}
+
+.rental-car-types-title h1 span{
+    color: #F5B754;
+    font-size: 30px;
+}
+
+
+
+.rental-car-card-wrapper{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.rental-car-types-card{
+    transition: transform 0.5s ease-in-out;
+    position: relative;
+    width: 350px;
+    height: 350px;
+}
+
+.rental-car-card-img{
+    display: block;
+    overflow: hidden;
+    border-radius: 25px;
+    box-sizing: border-box;
+}
+
+.rental-car-card-img img:hover{
+    transform: scale(1.1);
+}
+
+.rental-car-types-card .rental-car-card-img a img{
+    transition: 1.2s ease;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    object-fit: cover;
+}
+
+.rental-car-card-title{
+    position: absolute;
+    top: 30px;
+    left: 30px;
+}
+
+.rental-car-card-title h2{
+    color: white;
+}
+
+.rental-car-hr2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.rental-car-hr2 hr{
+    width: 70px;
+    border: 1px solid #F5B754;
+    transform: rotate(90deg); /* 90 daraja aylantirish */
+    transform-origin: center;
+}
+
+/* ---------------------------------------------------------------------------------------------------------- */
+
+.rental-car-process{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+.rental-car-process-inner{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.rental-car-process-title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 100px;
+}
+
+.rental-car-process-title h4{
+    color: #F5B754;
+    letter-spacing: 5px;
+    font-size: 12px;
+}
+
+.rental-car-process-title h1{
+    font-size: 30px;
+}
+
+.rental-car-process-title h1 span{
+    color: #F5B754;
+    font-size: 30px;
+}
+
+.rental-car-process-card-wrapper{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 5px;
+}
+
+.rental-car-process-card{
+    width: 330px;
+    height: 265px;
+    background-color: rgba(242, 236, 236, 0.689);
+    border-radius: 25px;
+    padding: 45px 40px;
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+
+.rental-car-process-card-title{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 280px;
+}
+
+.rental-car-process-card-title strong{
+    font-size: 23px;
+}
+
+
+.rental-car-process-card-title p{
+    font-size: 14px;
+    column-gap: 50px;
+    line-height: 25px;
+    color: rgba(0, 0, 0, 0.578);
+}
+
+.rental-car-process-info{
+    display: flex;
+    gap: 5px;
+}
+
+.rental-car-process-info img{
+    width: 16px;
+    height: 16px;
+}
+
+.rental-car-process-info p{
+    color: rgba(0, 0, 0, 0.687);
+}
+/* ---------------------------------------------------------------------------------------------------------------------------------------------------- */
+.car-promo-video{
+    width: 100%;
+    height: 450px;
+    background-color: white;
+    margin-top: 100px;
+}
+
+.car-promo-background-color{
+    width: 100%;
+    height: 450px;
+    background-color: rgba(0, 0, 0, 0.483);
+    position: absolute;
+}
+
+.car-promo-video-inner{
+    width: 100%;
+    height: 450px;
+    background: url('/public/images/video.jpg') center center no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+}
+
+.car-promo-inner-title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    z-index: 1;
+}
+
+.car-promo-inner-title h4{
+    color: #F5B754;
+    letter-spacing: 7px;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.car-promo-inner-title h1{
+    font-size: 35px;
+    color: white;
+}
+
+.car-promo-inner-title h1 span{
+    color: #F5B754;
+    font-size: 35px;
+}
+
+.car-promo-inner-video{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #F5B754;
+    width: 90px;
+    cursor: pointer;
+    height: 90px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.car-promo-inner-video img{
+    width: 35px;
+    height: 35px;
+}
+/* ---------------------------------------------------------------------------------------------------------------------------------------------------- */
+.rental-car-client{
+    width: 100%;
+    height: 600px;
+}
+
+.rental-car-client-inner{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.rental-car-client-inner-title{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.rental-car-client-inner-title h4{
+    color: #F5B754;
+    letter-spacing: 7px;
+    font-size: 11px;
+    text-transform: uppercase;
+}
+
+.rental-car-client-inner-title h1{
+    font-size: 35px;
+}
+
+.rental-car-client-inner-title h1 span{
+    color: #F5B754;
+    font-size: 35px;
+}
+
+.rental-car-client-inner-wrapper{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.rental-car-client-inner-card{
+    width: 330px;
+    height: 350px;
+    background-color: #F2F2F2;
+    border-radius: 25px;
+    padding: 0 30px;
+}
+
+.client-card-stars{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.client-card-stars img{
+    width: 15px;
+    height: 15px;
+}
+
+.client-card-qoshtirnoq{
+    display: flex;
+    align-items: center;
+}
+
+.client-card-qoshtirnoq img{
+    width: 80px;
+    height: 80px;
+}
+
+.client-card-customer{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.client-card-customer-img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.client-card-customer-img img{
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+}
+
+/* ---------------------------------------------------------------------------------------------------------------------------------------------------- */
+.car-logos{
+    width: 100%;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.car-logos-inner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logos-image{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.logos-image img{
+    height: 90px;
+    width: 150px;
+}
+/* ----------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+.footer-hero{
+    background-color: #1B1B1B;
+    width: 100%;
+    height: 100%;
+}
+
+.footer-hero-inner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 50px;
+}
+
+.footer-inner-contact{
+    margin-top: 80px;
+    width: 1000px;
+    height: 100px;
+    background-color:#1B1B1B;
+    border: 1px solid rgba(255, 255, 255, 0.071);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    padding: 0 20px;
+}
+
+.footer-inner-contact hr{
+    height: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.071);
+}
+
+.f_i_contact-div1{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.f_i_contact-telephone{
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F5B754;
+    border-radius: 50%;
+}
+
+.f_i_contact-telephone img{
+    width: 26px;
+    height: 26px;
+}
+
+.f_i_contact-number{
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.f_i_contact-number h4{
+    color: white;
+    font-size: 15px;
+}
+
+.f_i_contact-number p{
+    font-size: 13px;
+    color:#CCD1CC;
+}
+
+.f_i_contact-email{
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F5B754;
+    border-radius: 50%;
+}
+
+.f_i_contact-email img{
+    width: 26px;
+    height: 26px;
+}
+
+.f_i_contact-email_adress{
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.f_i_contact-email_adress h4{
+    color: white;
+    font-size: 15px;
+}
+
+.f_i_contact-email_adress p{
+    font-size: 13px;
+    color:#CCD1CC;
+}
+
+
+.f_i_contact-adress{
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F5B754;
+    border-radius: 50%;
+}
+
+.f_i_contact-adress img{
+    width: 26px;
+    height: 26px;
+}
+
+.f_i_contact-adress-loc{
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.f_i_contact-adress-loc h4{
+    color: white;
+    font-size: 15px;
+}
+
+.f_i_contact-adress-loc p{
+    font-size: 13px;
+    color:#CCD1CC;
+}
+
+
+
+.footer-navigation{
+    display: flex;
+    gap: 120px;
+    margin-top: 20px;
+    height: 300px;
+    width: 100%;
+    align-items: center;
+}
+
+.footer-navigation-about{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center;
+}
+
+.footer-navigation-about a{
+    color: #F5B754;
+    text-decoration: none;
+    font-size: 25px;
+}
+
+.footer-navigation-about a span{
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+}
+
+.footer-navigation-about p{
+    color:#CCD1CC;
+    line-height: 25px;
+    font-size: 13px;
+}
+
+.f-n-about-socials{
+    display: flex;
+    gap: 10px;
+}
+
+.f-n-about-socials-facebook{
+    display: flex;
+    width: 46px;
+    height: 46px;
+    border: 2px solid #F5B754;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+.f-n-about-socials-facebook img{
+    width: 20px;
+    height: 20px;
+}
+
+.footer-navigation-links{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+}
+
+.footer-navigation-links h2{
+    color: white;
+}
+
+.footer-navigation-links ul{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    color: #CCD1CC;
+    font-size: 14px;
+}
+
+.footer-navigation-links ul li::marker{
+    color: #F5B754;
+}
+
+.footer-navigation-links ul li:hover{
+    color: #F5B754;
+}
+
+.footer-navigation-subscribe{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center;
+}
+
+
+.footer-navigation-subscribe h2{
+    color: white;
+}
+
+.footer-navigation-subscribe p{
+    color: #CCD1CC;
+    font-size: 13px;
+    line-height: 25px;
+}
+
+.footer-navigation-subscribe form input{
+    border: 2px solid #F5B754;
+    background-color: transparent;
+    width: 300px;
+    height: 60px;
+    padding: 15px;
+    border-radius: 50px;
+    color: white;
+    font-size: 15px;
+}
+
+.searchBox {
+    display: flex;
+    max-width: 280px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    position: relative;
+}
+
+.searchButton img{
+    width: 20px;
+    height: 20px;
+}
+
+.searchButton {
+    color: white;
+    position: absolute;
+    right: 8px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #F5B754;
+    border: 0;
+    display: inline-block;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+}
+
+button:hover {
+    color: #fff;
+    background-color: #1A1A1A;
+    box-shadow: rgba(0, 0, 0, 0.5) 0 10px 20px;
+    transform: translateY(-3px);
+}
+button:active {
+    box-shadow: none;
+    transform: translateY(0);
+}
+
+.footer-bottom{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.footer-bottom hr{
+    border: 0.5px solid #ccd1cc0d;
+    width: 990px;
+}
+
+.footer-bottom p{
+    color: #CCD1CC;
+    font-size: 13px;
+}
