@@ -237,6 +237,7 @@ nav .help .help-number h3:hover {
 .about-inner .about-title p{
     font-size: 12px;
     color: rgba(0, 0, 0, 0.544);
+    line-height: 25px;
     column-gap: 5px;
 }
 
