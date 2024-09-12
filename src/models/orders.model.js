@@ -9,7 +9,7 @@ const orderSchema = new mongoose.Schema(
     },
     customer_id: {
       type: mongoose.SchemaTypes.ObjectId,
-      ref: "Customer",
+      ref: "User",
       required: true,
     },
     start_time: {

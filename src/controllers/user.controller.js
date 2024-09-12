@@ -24,7 +24,6 @@ class UserController {
         query
       )
         .filter()
-        .sort("birthDate")
         .limitFields()
         .getQuery()
         .countDocuments();
@@ -35,11 +34,9 @@ class UserController {
         query
       )
         .filter()
-        .sort("birthDate")
         .limitFields()
         .paginate()
         .getQuery()
-        .populate("groups")
         .select("-hashed_password"); // Change to match your field
 
       res.send({

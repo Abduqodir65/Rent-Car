@@ -12,7 +12,7 @@ routes.use("/users", userRouter);
 routes.use("/cars", carRouter);
 routes.use("/orders", orderRouter);
 routes.use("/payments", paymentRouter);
-routes.use("/wallets", walletRouter);
+routes.use("/wallet", walletRouter);
 routes.use("/admins", adminRouter);
 
 export default routes;
