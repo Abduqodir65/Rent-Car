@@ -1,144 +1,138 @@
 import { isValidObjectId } from "mongoose";
-import { config } from 'dotenv';
-import { hash, compare } from 'bcrypt';
-import jwt from 'jsonwebtoken'
-import { User } from "../models/user.model.js";
-import registerValidation from '../helpers/valiadation.js'
-import { errorHandler } from '../helpers/errorHandle.js';
-
-config()
+import bcrypt from "bcrypt";
+import User from "./user.model.js";
+import ApiFeature from "../utils/api-feature.utils.js";
+import { BadRequestException } from "../../exceptions/bad-request.exception.js";
+import bcryptConfig from "../../config/bcrypt.config.js";
+import { ConflictException } from "../../exceptions/conflict.exception.js";
 
 class UserController {
-  constructor() {}
+  #_userModel;
 
-  async getAllUsers(req, res) {
-    const allUsers = await User.find();
-
-    res.send({
-      message: "Success",
-      results: allUsers.length,
-      data: allUsers,
-    });
+  constructor() {
+    this.#_userModel = User;
   }
 
-  async createUser(req, res) {
-    const { first_name, last_name, phone,password, username } = req.body;
+  // Get all users with filtering, sorting, and pagination
+  getAllUsers = async (req, res, next) => {
+    try {
+      const query = { ...req.query };
 
-    const newUser = new User({
-      first_name: first_name, 
-      last_name: last_name,
-      phone: phone,
-      password:password,
-      username:username,
-    });
+      // GET ALL FILTERED USERS COUNT
+      const allResultsCount = await new ApiFeature(
+        this.#_userModel.find(),
+        query
+      )
+        .filter()
+        .sort("birthDate")
+        .limitFields()
+        .getQuery()
+        .countDocuments();
 
-    await newUser.save();
+      // EXECUTE QUERY
+      const allFilteredUsers = await new ApiFeature(
+        this.#_userModel.find(),
+        query
+      )
+        .filter()
+        .sort("birthDate")
+        .limitFields()
+        .paginate()
+        .getQuery()
+        .populate("groups")
+        .select("-hashed_password"); // Change to match your field
 
-    res.status(201).send({
-      message: "success",
-      data: newUser,
-    });
-  }
-
-  async updateUser(req, res) {
-    const { first_name, last_name, phone,password, username } = req.body;
-
-    const userId = req.params?.userId;
-
-    if (!isValidObjectId(userId)) {
-      return res.status(404).send({
-        message: "Iltimos Object ID jo'nating",
+      res.send({
+        message: "success",
+        page: req.query?.page || 0,
+        limit: req.query?.limit || 10,
+        results: allResultsCount,
+        data: allFilteredUsers,
       });
+    } catch (error) {
+      next(error);
     }
+  };
 
-    const foundedUser = await User.findById(userId);
-
-    if (!foundedUser) {
-      return res.status(404).send({
-        message: "User topilmadi",
-      });
-    }
-
-
-    await User.updateOne(
-      { _id: userId },
-      {
-        $set: {
-          first_name: first_name, 
-          last_name: last_name,
-          phone: phone,
-          username:username,
-        },
+  // Create a new user
+  createUser = async (req, res, next) => {
+    try {
+      if (req.role === "admin") {
+        if (req.body.role === "admin" || req.body.role === "super-admin") {
+          throw new ConflictException(
+            "You are not allowed to create admin or super-admin users"
+          );
+        }
       }
-    );
-    res.status(200).send({
-      message: "success",
-    });
-  }
+      
+      const hashedPass = await bcrypt.hash(req.body.hashed_password, bcryptConfig.rounds);
 
-  async deleteUser(req, res) {
-    const userId = req.params?.userId;
-  
-    if (!isValidObjectId(userId)) {
-      return res.status(404).send({
-        message: "Iltimos Object ID jonating",
+      await this.#_userModel.create({
+        ...req.body,
+        hashed_password: hashedPass,
       });
-    }
-  
-    const foundedUser = await User.findById(userId);  
-  
-    if (!foundedUser) {
-      return res.status(404).send({
-        message: "User topilmadi",
+
+      res.status(201).send({
+        message: "User created successfully",
       });
+    } catch (error) {
+      next(error);
     }
-  
-    await User.deleteOne({ _id: userId });
-  
-    res.status(200).send({
-      message: "success",
-    });
-  }
+  };
 
+  // Update a user by ID
+  updateUser = async (req, res, next) => {
+    try {
+      const { userId } = req.params;
+      const { full_name, phone_number, email, hashed_password, address } = req.body;
 
-  async signin(req,res){
-    try{
+      let newPasswordHash = undefined;
 
-        const {username,password} = req.body;
-        const user = await User.findOne({username})
+      if (hashed_password) {
+        newPasswordHash = await bcrypt.hash(hashed_password, bcryptConfig.rounds);
+      }
 
-        if(!user){
-            return res.status(400).send({
-                message:"Username or password incorecct!!"
-            })
-        }
+      // Check if userId is valid
+      this.#_checkObjectId(userId);
 
-        const check_password = await  compare(password,user.password)
+      await this.#_userModel.findByIdAndUpdate(userId, {
+        full_name,
+        phone_number,
+        email,
+        hashed_password: newPasswordHash,
+        address,
+      });
 
-        if(!check_password){
-            return res.status(400).send({
-                message:"Username or password incorecct!!"
-            })
-        }
-        
-        const payload = {id:user._id, first_name:user.first_name}
-
-        const token = jwt.sign(payload,process.env.JWT_SECRET,{
-            expiresIn:process.env.JWT_EXPIRE
-        });
-
-        return res.status(200).send({
-            message:"User signed in successfully Uraaaaa",
-            data:user,
-            token
-        })
+      res.status(204).send();
+    } catch (error) {
+      next(error);
     }
-    catch(error){
-        errorHandler(error,res)
+  };
+
+  // Delete a user by ID
+  deleteUser = async (req, res, next) => {
+    try {
+      const { userId } = req.params;
+
+      // Check if userId is valid
+      this.#_checkObjectId(userId);
+
+      await this.#_userModel.findByIdAndDelete(userId);
+
+      res.send({
+        message: "User successfully deleted",
+      });
+    } catch (error) {
+      next(error);
     }
-}
+  };
 
-
+  // Private method to check if ObjectId is valid
+  #_checkObjectId = (id) => {
+    if (!isValidObjectId(id)) {
+      throw new BadRequestException(`Given ${id} is not a valid ObjectID`);
+    }
+  };
 }
 
 export default new UserController();

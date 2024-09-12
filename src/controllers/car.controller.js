@@ -1,97 +1,111 @@
-import { isValidObjectId } from "mongoose";
-import { Car } from "../models/car.model.js";
+import Car from "../models/car.model.js";
+import { BadRequestException } from "../exceptions/bad-request.exception.js";
+import { ConflictException } from "../exceptions/conflic.exception.js";
+import { NotFoundException } from "../exceptions/not-found.exception.js";
 
 class CarController {
-  constructor() {}
+  // Get all cars
+  getAllCars = async (req, res, next) => {
+    try {
+      const query = { ...req.query };
 
-  async getAllCars(req, res) {
-    const allCars = await Car.find();
+      const allCarsCount = await Car.countDocuments(query);
 
-    res.send({
-      message: "Success",
-      results: allCars.length,
-      data: allCars,
-    });
-  }
+      const allCars = await Car.find(query)
+        .sort("model");
 
-  async createCar(req, res) {
-    const { brand, model, vehicles_count, price } = req.body;
-
-    const newCar = new Car({
-      brand:brand, 
-      model: model,
-      vehicles_count: vehicles_count,
-      price: price,
-    });
-
-    await newCar.save();
-
-    res.status(201).send({
-      message: "success",
-      data: newCar,
-    });
-  }
-
-  async updateCar(req, res) {
-    const {brand, model, vehicles_count, price, ...rest } = req.body;
-
-    const CarId = req.params?.CarId;
-
-    if (!isValidObjectId(CarId)) {
-      return res.status(404).send({
-        message: "Iltimos Object ID jo'nating",
+      res.send({
+        message: "success",
+        results: allCarsCount,
+        data: allCars,
       });
+    } catch (error) {
+      next(error);
     }
+  };
 
-    const foundedCar = await Car.findById(CarId);
+  // Create a new car
+  createCar = async (req, res, next) => {
+    try {
+      const { model, price_daily, color, fuel_type, status } = req.body;
 
-    if (!foundedCar) {
-      return res.status(404).send({
-        message: "User topilmadi",
-      });
-    }
-
-
-    await Car.updateOne(
-      { _id: CarId },
-      {
-        $set: {
-          brand:brand, 
-          model: model,
-          vehicles_count: vehicles_count,
-          price: price,
-          ...rest,
-        },
+      // Check if the car already exists
+      const existingCar = await Car.findOne({ model, color, fuel_type });
+      if (existingCar) {
+        throw new ConflictException("Car with the same details already exists");
       }
-    );
-    res.status(200).send({
-      message: "success",
-    });
-  }
 
-  async deleteCar(req, res) {
-    const CarId = req.params?.CarId;
-  
-    if (!isValidObjectId(CarId)) {
-      return res.status(404).send({
-        message: "Iltimos Object ID jonating",
+      // Create a new car
+      const newCar = new Car({
+        model,
+        price_daily,
+        color,
+        fuel_type,
+        status,
       });
+
+      await newCar.save();
+
+      res.status(201).send({ message: "Car created successfully", car: newCar });
+    } catch (error) {
+      next(error);
     }
-  
-    const foundedCar = await Car.findById(CarId);  
-  
-    if (!foundedCar) {
-      return res.status(404).send({
-        message: "User topilmadi",
-      });
+  };
+
+  // Update a car
+  updateCar = async (req, res, next) => {
+    try {
+      const { carId } = req.params;
+      const { model, price_daily, color, fuel_type, status } = req.body;
+
+      // Check if the carId is valid
+      if (!isValidObjectId(carId)) {
+        throw new BadRequestException(`Given ${carId} is not a valid ObjectID`);
+      }
+
+      const updatedData = {
+        model,
+        price_daily,
+        color,
+        fuel_type,
+        status,
+      };
+
+      const updatedCar = await Car.findByIdAndUpdate(carId, updatedData, { new: true });
+      
+      // Check if the car was found and updated
+      if (!updatedCar) {
+        throw new NotFoundException("Car not found");
+      }
+
+      res.status(204).send();
+    } catch (error) {
+      next(error);
     }
-  
-    await Car.deleteOne({ _id: CarId });
-  
-    res.status(200).send({
-      message: "success",
-    });
-  }
+  };
+
+  // Delete a car
+  deleteCar = async (req, res, next) => {
+    try {
+      const { carId } = req.params;
+
+      // Check if the carId is valid
+      if (!isValidObjectId(carId)) {
+        throw new BadRequestException(`Given ${carId} is not a valid ObjectID`);
+      }
+
+      const deletedCar = await Car.findByIdAndDelete(carId);
+
+      // Check if the car was found and deleted
+      if (!deletedCar) {
+        throw new NotFoundException("Car not found");
+      }
+
+      res.send({ message: "Car deleted successfully" });
+    } catch (error) {
+      next(error);
+    }
+  };
 }
 
 export default new CarController();

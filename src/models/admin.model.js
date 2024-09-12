@@ -10,7 +10,7 @@ const adminSchema = new mongoose.Schema(
     email: {
       type: String,
       required: true,
-      unique: true,
+      unique: tru
     },
     phone_number: {
       type: String,

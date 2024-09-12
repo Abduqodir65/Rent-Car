@@ -2,71 +2,35 @@ import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
   {
-    first_name: {
-      type: String,
-      required: [true, "First name berilishi shart⚠️"],
-      trim: true,
-    },
-    last_name: {
-      type: String,
-      trim: true,
-      required: false,
-    },
-    username: {
-      type: String,
-      unique: true,
-      required: [true, "username berilishi shart!"],
-    },
-    password: {
-      type: String,
-      unique: true,
-      required: [true, "password berilishi shart!"],
-    },
-    phone: {
+    full_name: {
       type: String,
       required: true,
-      minLength: [12, "Nomer 12 uzunlikda bo'lishi kerak"],
-      maxLength: 12,
+      trim: true,
+    },
+    phone_number: {
+      type: String,
+      required: true,
+      trim: true,
     },
     email: {
       type: String,
-      unique: [true, "Email yagona bo'lishi kerak"],
-    },
-    role: {
-      type: String,
-      enum: {
-        values: ["student", "teacher", "admin", "super-admin"],
-      },
       required: true,
-      default: "student",
+      unique: true,
     },
-    birthDate: {
-      type: Date,
+    hashed_password: {
+      type: String,
       required: true,
     },
-    image_url: {
+    address: {
       type: String,
-      required: false,
+      required: true,
     },
-    passwordResetToken: {
-      type: String,
-    },
-    passwordResetTokenExpireTime: {
-      type: Date,
-    },
-    groups: [
-      {
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: "Group",
-      },
-    ],
   },
   {
-    collection: "users",
+    collection: "customers",
     timestamps: true,
   }
 );
 
 const User = mongoose.model("User", userSchema);
-
 export default User;

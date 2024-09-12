@@ -408,7 +408,7 @@ nav .help .help-number h3:hover {
 .about-video{
     position: absolute;
     background-color: white;
-    border-radius: 25px;
+    border-top-right-radius: 20px;
     width: 100px;
     height: 100px;
     right: 355px;
@@ -793,6 +793,36 @@ nav .help .help-number h3:hover {
     height: 350px;
 }
 
+.rental-car-types-card-view{
+    background-color: white;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-right-radius: 20px;
+    position: absolute;
+    top:270px;
+    left: 0px;
+    cursor: pointer;
+}
+
+.rental-car-types-card-view-inner{
+    width: 60px;
+    height: 60px;
+    background-color: #F5B754;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rental-car-types-card-view-inner img{
+    
+    width: 20px;
+    height: 20px;
+}
+
 .rental-car-card-img{
     display: block;
     overflow: hidden;
@@ -894,6 +924,28 @@ nav .help .help-number h3:hover {
     align-items: center;
 }
 
+.rental-car-process-card-number{
+    background-color: white;
+    width: 80px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-right-radius: 20px;
+    position: absolute;
+    top:200px;
+    left: 0px;
+}
+
+.rental-car-process-card-number-inner{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #F2F2F2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .rental-car-process-card-title{
     display: flex;
@@ -996,12 +1048,13 @@ nav .help .help-number h3:hover {
     height: 35px;
 }
 /* ---------------------------------------------------------------------------------------------------------------------------------------------------- */
-.rental-car-client{
+.rental-car-client {
     width: 100%;
     height: 600px;
+    position: relative;
 }
 
-.rental-car-client-inner{
+.rental-car-client-inner {
     width: 100%;
     height: 100%;
     display: flex;
@@ -1010,7 +1063,7 @@ nav .help .help-number h3:hover {
     gap: 50px;
 }
 
-.rental-car-client-inner-title{
+.rental-car-client-inner-title {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -1018,73 +1071,94 @@ nav .help .help-number h3:hover {
     margin-top: 100px;
 }
 
-.rental-car-client-inner-title h4{
-    color: #F5B754;
+.rental-car-client-inner-title h4 {
+    color: #f5b754;
     letter-spacing: 7px;
     font-size: 11px;
     text-transform: uppercase;
 }
 
-.rental-car-client-inner-title h1{
+.rental-car-client-inner-title h1 {
     font-size: 35px;
 }
 
-.rental-car-client-inner-title h1 span{
-    color: #F5B754;
-    font-size: 35px;
-}
-
-.rental-car-client-inner-wrapper{
+.rental-car-client-inner-wrapper {
     display: flex;
-    gap: 10px;
+    gap: 60px;
     align-items: center;
 }
 
-.rental-car-client-inner-card{
-    width: 330px;
-    height: 350px;
-    background-color: #F2F2F2;
+.rental-car-client-inner-card {
+    width: 310px;
+    height: 330px;
+    background-color: #f2f2f2;
     border-radius: 25px;
     padding: 0 30px;
 }
-
-.client-card-stars{
-    display: flex;
-    align-items: center;
-    justify-content: end;
+.rental-car-client-inner-title h1 span {
+    color: #f5b754;
+    font-size: 35px;
+}
+.rental-car-client-quote {
+    width: 40px;
+}
+.rental-car-client-text {
+    color: #747474;
+    line-height: 27px;
 }
 
-.client-card-stars img{
-    width: 15px;
-    height: 15px;
-}
-
-.client-card-qoshtirnoq{
-    display: flex;
-    align-items: center;
-}
-
-.client-card-qoshtirnoq img{
-    width: 80px;
-    height: 80px;
-}
-
-.client-card-customer{
-    display: flex;
-    align-items: center;
-    gap: 30px;
-}
-
-.client-card-customer-img{
+.rental-car-client-avatar{
+    background-color: white;
+    width: 100px;
+    height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-top-right-radius: 20px;
+    position: absolute;
+    left: 370px;
+    bottom: 35px;
 }
 
-.client-card-customer-img img{
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
+.rental-car-client-avatar img{
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+}
+.rental-car-client-flex-card{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+.rental-car-client-name h3{
+    font-size: 16px;
+    font-weight: 500;
+    margin-left: 90px;
+}
+.rental-car-client-name p{
+    color: #747474;
+    margin-top: 10px;
+    font-size: 13px;
+    margin-left: 90px;
+}
+
+
+.rental-car-client-card-stars {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    margin-left: 150px;
+    background-color: white;
+    border-bottom-left-radius: 20px;
+    width: 140px;
+    height: 50px;
+}
+
+.rental-car-client-card-stars img {
+    width: 20px;
+    height: 20px;
 }
 
 /* ---------------------------------------------------------------------------------------------------------------------------------------------------- */
