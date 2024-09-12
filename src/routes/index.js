@@ -1,7 +1,7 @@
 import { Router } from "express";
 import userRouter from "./user.routes.js";
 import carRouter from "./car.routes.js";
-import orderRouter from "./order.routes.js";
+import orderRouter from "./orders.routes.js";
 import paymentRouter from "./payment.routes.js";
 import walletRouter from "./wallet.routes.js";
 import adminRouter from "./admin.routes.js";

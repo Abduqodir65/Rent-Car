@@ -1,8 +1,8 @@
 import { isValidObjectId } from "mongoose";
-import Wallet from "./wallet.model.js";
+import Wallet from "../models/wallet.model.js";
 import ApiFeature from "../utils/api-feature.utils.js";
-import { BadRequestException } from "../../exceptions/bad-request.exception.js";
-import { ConflictException } from "../../exceptions/conflic.exception.js"; 
+import { BadRequestException } from "../exceptions/bad-request.exception.js";
+import { ConflictException } from "../exceptions/conflic.exception.js"; 
 
 class WalletController {
   #_walletModel;

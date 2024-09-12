@@ -1,6 +1,6 @@
 import Order from "../models/orders.model.js"; // Order modelini import qilish
 import Car from "../models/car.model.js";
-import Customer from "../models/customer.model.js";
+import User from "../models/user.model.js";
 import { BadRequestException } from "../exceptions/bad-request.exception.js";
 import { NotFoundException } from "../exceptions/not-found.exception.js";
 import { ConflictException } from "../exceptions/conflic.exception.js";
@@ -39,7 +39,7 @@ class OrderController {
         throw new BadRequestException("Car not found");
       }
 
-      const customer = await Customer.findById(customer_id);
+      const customer = await User.findById(customer_id);
       if (!customer) {
         throw new BadRequestException("Customer not found");
       }

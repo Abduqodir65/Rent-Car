@@ -1,6 +1,6 @@
 import Payment from "../models/payment.model.js"; // Payment modelini import qilish
 import Order from "../models/orders.model.js";
-import Customer from "../models/customer.model.js";
+import User from "../models/user.model.js";
 import Wallet from "../models/wallet.model.js";
 import { BadRequestException } from "../exceptions/bad-request.exception.js";
 import { NotFoundException } from "../exceptions/not-found.exception.js";
@@ -40,7 +40,7 @@ class PaymentController {
         throw new BadRequestException("Order not found");
       }
 
-      const customer = await Customer.findById(customer_id);
+      const customer = await User.findById(customer_id);
       if (!customer) {
         throw new BadRequestException("Customer not found");
       }

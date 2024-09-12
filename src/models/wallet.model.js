@@ -21,7 +21,7 @@ const walletSchema = new mongoose.Schema(
     collection: "wallets",
     timestamps: true,
   }
-);a
+);
 
 const Wallet = mongoose.model("Wallet", walletSchema);
 export default Wallet;
