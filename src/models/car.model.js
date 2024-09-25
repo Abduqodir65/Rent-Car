@@ -16,6 +16,10 @@ const carSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
+    car_image: {
+      type:String,
+      required: true
+    },
     fuel_type: {
       type: String,
       required: true,

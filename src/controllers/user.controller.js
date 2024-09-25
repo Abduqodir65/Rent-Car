@@ -13,12 +13,10 @@ class UserController {
     this.#_userModel = User;
   }
 
-  // Get all users with filtering, sorting, and pagination
   getAllUsers = async (req, res, next) => {
     try {
       const query = { ...req.query };
 
-      // GET ALL FILTERED USERS COUNT
       const allResultsCount = await new ApiFeature(
         this.#_userModel.find(),
         query
@@ -28,7 +26,6 @@ class UserController {
         .getQuery()
         .countDocuments();
 
-      // EXECUTE QUERY
       const allFilteredUsers = await new ApiFeature(
         this.#_userModel.find(),
         query
@@ -37,7 +34,7 @@ class UserController {
         .limitFields()
         .paginate()
         .getQuery()
-        .select("-hashed_password"); // Change to match your field
+        .select("-hashed_password"); 
 
       res.send({
         message: "success",
@@ -51,7 +48,6 @@ class UserController {
     }
   };
 
-  // Create a new user
   createUser = async (req, res, next) => {
     try {
       if (req.role === "admin") {
@@ -77,7 +73,6 @@ class UserController {
     }
   };
 
-  // Update a user by ID
   updateUser = async (req, res, next) => {
     try {
       const { userId } = req.params;
@@ -89,7 +84,6 @@ class UserController {
         newPasswordHash = await bcrypt.hash(hashed_password, bcryptConfig.rounds);
       }
 
-      // Check if userId is valid
       this.#_checkObjectId(userId);
 
       await this.#_userModel.findByIdAndUpdate(userId, {
@@ -106,12 +100,10 @@ class UserController {
     }
   };
 
-  // Delete a user by ID
   deleteUser = async (req, res, next) => {
     try {
       const { userId } = req.params;
 
-      // Check if userId is valid
       this.#_checkObjectId(userId);
 
       await this.#_userModel.findByIdAndDelete(userId);
@@ -124,7 +116,6 @@ class UserController {
     }
   };
 
-  // Private method to check if ObjectId is valid
   #_checkObjectId = (id) => {
     if (!isValidObjectId(id)) {
       throw new BadRequestException(`Given ${id} is not a valid ObjectID`);
