@@ -8,13 +8,17 @@ import { sendMail } from "../utils/send-email.utils.js";
 import appConfig from "../config/app.config.js";
 import passwordResetConfig from "../config/password-reset.config.js";
 import bcryptConfig from "../config/bcrypt.config.js";
-
+import generateOTP from "../utils/generate-otp.utils.js";
+import { Otp } from "../models/otp.model.js";
 
 class AuthController {
   #_userModel;
+  #_otpModel;
+
 
   constructor() {
     this.#_userModel = User;
+    this.#_otpModel = Otp;
   }
 
   signin = async (req, res, next) => {
@@ -29,18 +33,77 @@ class AuthController {
         req.body.password,
         foundedUser.hashed_password
       );
+
       if (!result) {
         return res.status(409).send({
           message: "Invalid password or full_name",
         });
       }
+
       const accessToken = signToken({
         id: foundedUser.id,
         role: foundedUser.role,
       });
+
       res.send({
         message: "success",
         token: accessToken,
+      });
+
+
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  generateOtp = async (req, res, next) => {
+    try {
+      const { email } = req.body;
+      const otpCode = generateOTP();
+
+      const verifyText = crypto.randomBytes(64).toString("hex");
+
+      await this.#_otpModel.create({
+        email,
+        verifyText,
+        code: otpCode,
+      });
+
+      await sendMail({
+        to: email,
+        subject: "Verification code for LMS",
+        html: `
+        <h2>Sizning verifikatsiya kodingiz:</h2>
+        <input type="text" disabled value='${otpCode}'/>
+        `,
+      });
+
+      res.send({
+        verifyText,
+      });
+    } catch (error) {
+      next(error);
+    }
+  };
+
+
+  verifyOtp = async (req, res, next) => {
+    try {
+      const { code, verifyText } = req.body;
+
+      const foundedOtp = await this.#_otpModel.findOne({ code, verifyText });
+
+      if (!foundedOtp) {
+        throw new ConflictException("Your OTP is already expired or used");
+      }
+
+      await this.#_otpModel.findByIdAndDelete(foundedOtp.id);
+
+      res.send({
+        user: {
+          email: foundedOtp.email,
+        },
+        success: true,
       });
     } catch (error) {
       next(error);
