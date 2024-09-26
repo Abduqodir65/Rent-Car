@@ -59,6 +59,7 @@ class AuthController {
   generateOtp = async (req, res, next) => {
     try {
       const { email } = req.body;
+      
       const otpCode = generateOTP();
 
       const verifyText = crypto.randomBytes(64).toString("hex");
