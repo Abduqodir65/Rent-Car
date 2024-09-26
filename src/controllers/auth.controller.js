@@ -59,7 +59,7 @@ class AuthController {
   generateOtp = async (req, res, next) => {
     try {
       const { email } = req.body;
-      
+
       const otpCode = generateOTP();
 
       const verifyText = crypto.randomBytes(64).toString("hex");
@@ -72,7 +72,7 @@ class AuthController {
 
       await sendMail({
         to: email,
-        subject: "Verification code for LMS",
+        subject: "Verification code for Rent Car",
         html: `
         <h2>Sizning verifikatsiya kodingiz:</h2>
         <input type="text" disabled value='${otpCode}'/>
